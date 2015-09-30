@@ -51,12 +51,22 @@ function start() {
         task();
     } else {
 
-        // FIX: if no immediate value chosen, indiff = taskData.immAmount[amountCounter]
         // TODO: if (delayCounter > taskData.delLength.length - 2) -> results()
         //       after adding data to subjectData before task()
         console.log("yo-bro!");
 
         //calculate indifference
+
+        if (immChoicesDesc.length == 0) {
+            // no immediate choice selected
+            immChoicesDesc[0] = taskData.delAmount;
+        }
+
+        if (immChoicesAsc.length == 0) {
+            // no immediate choice selected
+            immChoicesAsc[0] = taskData.delAmount;
+        }
+
         var indiff = (immChoicesDesc[immChoicesDesc.length - 1] + immChoicesAsc[0]) / 2
 
         // record subject data for each delay
