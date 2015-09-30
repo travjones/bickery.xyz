@@ -4,30 +4,28 @@ var taskData = {
     "immAmount": [1000, 990, 960, 920, 850, 800, 750, 700, 650, 600, 550, 500, 450, 400, 350, 300, 250, 200, 150, 100, 80, 60, 40, 20, 10, 5, 1],
     "delAmount": 1000,
     "delLength": [{
-        "inDays": 7,
+        "inMonths": 0.25,
         "inWords": "1 week"
     }, {
-        "inDays": 14,
+        "inMonths": 0.5,
         "inWords": "2 weeks"
     }, {
-        "inDays": 30,
+        "inMonths": 1,
         "inWords": "1 month"
     }, {
-        "inDays": 180,
+        "inMonths": 6,
         "inWords": "6 months"
     }, {
-        "inDays": 365,
+        "inMonths": 12,
         "inWords": "1 year"
     }, {
-        "inDays": 1825,
+        "inMonths": 60,
         "inWords": "5 years"
     }, {
-        "inDays": 9125,
+        "inMonths": 300,
         "inWords": "25 years"
     }]
 };
-
-]
 
 // subject data
 var subjectData = {
@@ -44,7 +42,6 @@ function start() {
     var trialHTML = "<div class=\"task-container\">\r\n  <div class=\"container u-vert-align\">\r\n    <div class=\"row\">\r\n      <div class=\"u-full-width\"><p class=\"instructions\">Which would you prefer?<\/p><\/div>\r\n    <\/div>\r\n    <div class=\"row\">\r\n      <div class=\"six columns\">Now<\/div>\r\n      <div class=\"six columns\" id=\"delay\">After x<\/div>\r\n    <\/div>\r\n    <div class=\"row\">\r\n      <div class=\"six columns\">\r\n        <button class=\"button-primary\" id=\"imm-btn\">immediate amount<\/button>\r\n      <\/div>\r\n      <div class=\"six columns\">\r\n        <button class=\"button-primary\" id=\"del-btn\">delayed amount<\/button>\r\n      <\/div>\r\n    <\/div>\r\n  <\/div>\r\n<\/div>";
     document.body.innerHTML = trialHTML;
 
-    // figure out logic for one delay value and then use same logic for each delay value
     delay = document.getElementById("delay");
     delay.textContent = "After " + taskData.delLength[delayCounter].inWords;
 
@@ -53,16 +50,17 @@ function start() {
         makingChoice = false;
         task();
     } else {
-        //calculate indifference
 
         // FIX: if no immediate value chosen, indiff = taskData.immAmount[amountCounter]
-        // probably have to pass it into start()
-
+        // TODO: if (delayCounter > taskData.delLength.length - 2) -> results()
+        //       after adding data to subjectData before task()
         console.log("yo-bro!");
+
+        //calculate indifference
         var indiff = (immChoicesDesc[immChoicesDesc.length - 1] + immChoicesAsc[0]) / 2
 
         // record subject data for each delay
-        subjectData.delays.push(taskData.delLength[delayCounter].inDays);
+        subjectData.delays.push(taskData.delLength[delayCounter].inMonths);
         subjectData.indiffVals.push(indiff);
         console.log(subjectData);
         delayCounter++;
@@ -93,7 +91,7 @@ function task() {
             amountCounterAsc--;
             immBtn.textContent = taskData.immAmount[amountCounterAsc];
 
-            if (amountCounterAsc < 1) {
+            if (amountCounterAsc < 0) {
                 // reset counters, makingChoice = false -> next delay
                 amountCounter = 0;
                 amountCounterAsc = taskData.immAmount.length - 1;
