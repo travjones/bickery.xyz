@@ -6,25 +6,27 @@ var taskData = {
     "delLength": [{
         "inMonths": 0.25,
         "inWords": "1 week"
-    }, {
-        "inMonths": 0.5,
-        "inWords": "2 weeks"
-    }, {
-        "inMonths": 1,
-        "inWords": "1 month"
-    }, {
-        "inMonths": 6,
-        "inWords": "6 months"
-    }, {
-        "inMonths": 12,
-        "inWords": "1 year"
-    }, {
-        "inMonths": 60,
-        "inWords": "5 years"
-    }, {
-        "inMonths": 300,
-        "inWords": "25 years"
-    }]
+    },
+    // {
+    //     "inMonths": 0.5,
+    //     "inWords": "2 weeks"
+    // }, {
+    //     "inMonths": 1,
+    //     "inWords": "1 month"
+    // }, {
+    //     "inMonths": 6,
+    //     "inWords": "6 months"
+    // }, {
+    //     "inMonths": 12,
+    //     "inWords": "1 year"
+    // }, {
+    //     "inMonths": 60,
+    //     "inWords": "5 years"
+    // }, {
+    //     "inMonths": 300,
+    //     "inWords": "25 years"
+    // }]
+    ] // delete dis when you uncommment the rest
 };
 
 // subject data
@@ -51,10 +53,6 @@ function start() {
         task();
     } else {
 
-        // TODO: if (delayCounter > taskData.delLength.length - 2) -> results()
-        //       after adding data to subjectData before task()
-        console.log("yo-bro!");
-
         //calculate indifference
 
         if (immChoicesDesc.length == 0) {
@@ -74,6 +72,10 @@ function start() {
         subjectData.indiffVals.push(indiff);
         console.log(subjectData);
         delayCounter++;
+        if (delayCounter > taskData.delLength.length - 1) {
+            showResults();
+            return; // end execution of start() before task() called again
+        }
         task();
     }
 }
@@ -105,7 +107,6 @@ function task() {
                 // reset counters, makingChoice = false -> next delay
                 amountCounter = 0;
                 amountCounterAsc = taskData.immAmount.length - 1;
-                console.log("hey!");
                 makingChoice = false;
                 start();
             }
@@ -131,7 +132,9 @@ function task() {
 }
 
 function showResults() {
-    alert("results!");
+    // alert("results!");
+    var resultsHTML = "";
+    document.body.innerHTML = resultsHTML;
 }
 
 // event listeners
