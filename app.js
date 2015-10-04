@@ -72,6 +72,8 @@ function start() {
         subjectData.indiffVals.push(indiff);
         console.log(subjectData);
         delayCounter++;
+
+        // end task after no more delays
         if (delayCounter > taskData.delLength.length - 1) {
             showResults();
             return; // end execution of start() before task() called again
@@ -133,8 +135,9 @@ function task() {
 
 function showResults() {
     // alert("results!");
-    var resultsHTML = "";
+    var resultsHTML = "<div class=\"results-container\">\r\n  <div class=\"container u-vert-align\">\r\n    <div class=\"row\">\r\n      <div class=\"u-full-width\"><h1>Your Results<\/h1><\/div>\r\n    <\/div>\r\n    <div class=\"row\">\r\n      <div class=\"u-full-width\" id=\"results\"><\/div>\r\n    <\/div>\r\n  <\/div>\r\n<\/div>";
     document.body.innerHTML = resultsHTML;
+    calc();
 }
 
 // event listeners
