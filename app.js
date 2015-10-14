@@ -49,8 +49,11 @@ function start() {
     delay.textContent = "After " + taskData.delLength[delayCounter].inWords;
 
     if (makingChoice) {
+
         task();
+
     } else {
+
         //calculate indifference
         if (immChoicesDesc.length == 0) {
             // no immediate choice selected
@@ -68,6 +71,7 @@ function start() {
         subjectData.delays.push(taskData.delLength[delayCounter].inMonths);
         subjectData.indiffVals.push(indiff);
         console.log(subjectData);
+
         delayCounter++;
 
         // end task after no more delays
@@ -79,7 +83,8 @@ function start() {
     }
 }
 
-function task() {
+var task = function() {
+
     // init variables
     var amountCounter = 0,
     amountCounterAsc = taskData.immAmount.length - 1;
@@ -94,7 +99,7 @@ function task() {
     delBtn.textContent = taskData.delAmount;
     delay.textContent = "After " + taskData.delLength[delayCounter].inWords;
 
-    function nextQuestion() {
+    var nextQuestion = function() {
         amountCounter++;
         immBtn.textContent = taskData.immAmount[amountCounter];
 
@@ -110,10 +115,9 @@ function task() {
                 start();
             }
         }
-    }
+    };
 
-    function recordAnswer() {
-
+    var recordAnswer = function() {
         if (amountCounter > taskData.immAmount.length - 1) {
             immChoicesAsc.push(parseInt(immBtn.textContent));
             console.log(immChoicesAsc);
@@ -123,12 +127,12 @@ function task() {
             console.log(immChoicesDesc);
             nextQuestion();
         }
-    }
+    };
 
+    // event listeners
     immBtn.addEventListener("click", recordAnswer);
     delBtn.addEventListener("click", nextQuestion);
-
-}
+};
 
 function showResults() {
     // alert("results!");
@@ -137,5 +141,5 @@ function showResults() {
     calc();
 }
 
-// event listeners
+// event listener - start
 document.getElementById("start-btn").addEventListener("click", start);
