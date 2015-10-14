@@ -7,10 +7,11 @@ var taskData = {
         "inMonths": 0.25,
         "inWords": "1 week"
     },
+    {
+        "inMonths": 0.5,
+        "inWords": "2 weeks"
+    },
     // {
-    //     "inMonths": 0.5,
-    //     "inWords": "2 weeks"
-    // }, {
     //     "inMonths": 1,
     //     "inWords": "1 month"
     // }, {
@@ -48,13 +49,9 @@ function start() {
     delay.textContent = "After " + taskData.delLength[delayCounter].inWords;
 
     if (makingChoice) {
-        console.log("yo!");
-        makingChoice = false;
         task();
     } else {
-
         //calculate indifference
-
         if (immChoicesDesc.length == 0) {
             // no immediate choice selected
             immChoicesDesc[0] = taskData.delAmount;
