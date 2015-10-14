@@ -1,13 +1,26 @@
 function calc() {
+
 	var fun = function(x, P) {
 		// dd hyperbolic with sensitivity param (see Dallery et al., 2007)
 		return x.map(function(xi){return (taskData.delAmount/(Math.pow((1+P[0]*xi),P[1])))})
 	};
+
 	var x = subjectData.delays;
 	var y = subjectData.indiffVals;
+
 	var params = fminsearch(fun,[0.5,0.5],x,y);
 	console.log(params);
-	document.getElementById("results").textContent = "Your k: " + params[0];
+
+	var googleGraphURL = "https://www.google.com/?gws_rd=ssl#q=" + taskData.delAmount + "%2F(1%2B" + params[0] + "x)%5E" + params[1];
+	var graphLink = document.createElement("a");
+	graphLink.setAttribute("href", googleGraphURL);
+	graphLink.setAttribute("target", "_blank");
+	graphLink.textContent = "See your function!";
+
+	document.getElementById("results-k").textContent = "k: " + parseFloat(params[0]).toFixed(3);
+	document.getElementById("results-a").textContent = "a: " + parseFloat(params[1]).toFixed(3);
+	document.getElementById("results-graph").appendChild(graphLink);
+
 	return params;
 }
 

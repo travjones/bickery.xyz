@@ -83,7 +83,7 @@ function start() {
     }
 }
 
-var task = function() {
+var task = (function() {
 
     // init variables
     var amountCounter = 0,
@@ -132,11 +132,11 @@ var task = function() {
     // event listeners
     immBtn.addEventListener("click", recordAnswer);
     delBtn.addEventListener("click", nextQuestion);
-};
+});
 
 function showResults() {
     // alert("results!");
-    var resultsHTML = "<div class=\"results-container\">\r\n  <div class=\"container u-vert-align\">\r\n    <div class=\"row\">\r\n      <div class=\"u-full-width\"><h1>Your Results<\/h1><\/div>\r\n    <\/div>\r\n    <div class=\"row\">\r\n      <div class=\"u-full-width\" id=\"results\"><\/div>\r\n    <\/div>\r\n  <\/div>\r\n<\/div>";
+    var resultsHTML = "<div class=\"results-container\">\r\n  <div class=\"container u-vert-align\">\r\n    <div class=\"row\">\r\n      <div class=\"u-full-width\"><h3>Results<\/h3><\/div>\r\n    <\/div>\r\n    <div class=\"row\">\r\n      <div class=\"u-full-width\" id=\"results-k\"><\/div>\r\n      <div class=\"u-full-width\" id=\"results-a\"><\/div>\r\n      <div class=\"u-full-width\" id=\"results-graph\"><\/div>\r\n    <\/div>\r\n  <\/div>\r\n<\/div>";
     document.body.innerHTML = resultsHTML;
     calc();
 }
