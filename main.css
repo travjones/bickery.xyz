@@ -44,6 +44,28 @@ body {
 .instructions {
 	padding-bottom: 1em;
 	font-size: 2em;
+	color: #7f8c8d;
+}
+
+.task-button {
+	background-color: #3e8cc0;
+	color: white;
+	height: 3em;
+	font-size: 2em;
+	font-weight: normal;
+}
+
+.task-button:hover {
+	background-color: #2980b9;
+}
+
+.now-label {
+	font-size: 2em;
+}
+
+.after-label {
+	font-size: 2em;
+	color: #e74c3c;
 }
 
 .results-container {

@@ -42,7 +42,7 @@ var delayCounter = 0;
 
 function start() {
     // setup trial view/html
-    var trialHTML = "<div class=\"task-container\">\r\n  <div class=\"container u-vert-align\">\r\n    <div class=\"row\">\r\n      <div class=\"u-full-width\"><p class=\"instructions\">Which would you prefer?<\/p><\/div>\r\n    <\/div>\r\n    <div class=\"row\">\r\n      <div class=\"six columns\">Now<\/div>\r\n      <div class=\"six columns\" id=\"delay\">After x<\/div>\r\n    <\/div>\r\n    <div class=\"row\">\r\n      <div class=\"six columns\">\r\n        <button class=\"button-primary\" id=\"imm-btn\">immediate amount<\/button>\r\n      <\/div>\r\n      <div class=\"six columns\">\r\n        <button class=\"button-primary\" id=\"del-btn\">delayed amount<\/button>\r\n      <\/div>\r\n    <\/div>\r\n  <\/div>\r\n<\/div>";
+    var trialHTML = "<div class=\"task-container\">\r\n<div class=\"container u-vert-align\">\r\n  <div class=\"row\">\r\n    <div class=\"u-full-width\"><p class=\"instructions\">Which would you prefer?<\/p><\/div>\r\n  <\/div>\r\n  <div class=\"row\">\r\n    <div class=\"six columns now-label\">Now<\/div>\r\n    <div class=\"six columns after-label\" id=\"delay\">After x<\/div>\r\n  <\/div>\r\n  <div class=\"row\">\r\n    <div class=\"six columns\">\r\n      <button class=\"task-button\" id=\"imm-btn\">immediate amount<\/button>\r\n    <\/div>\r\n    <div class=\"six columns\">\r\n      <button class=\"task-button\" id=\"del-btn\">delayed amount<\/button>\r\n    <\/div>\r\n  <\/div>\r\n<\/div>\r\n<\/div>";
     document.body.innerHTML = trialHTML;
 
     delay = document.getElementById("delay");
@@ -95,17 +95,17 @@ var task = (function() {
     // remember: variable declarations without var are automatically GLOBAL
     immBtn = document.getElementById("imm-btn");
     delBtn = document.getElementById("del-btn");
-    immBtn.textContent = taskData.immAmount[amountCounter];
-    delBtn.textContent = taskData.delAmount;
+    immBtn.textContent = "$" + taskData.immAmount[amountCounter];
+    delBtn.textContent = "$" + taskData.delAmount;
     delay.textContent = "After " + taskData.delLength[delayCounter].inWords;
 
     var nextQuestion = function() {
         amountCounter++;
-        immBtn.textContent = taskData.immAmount[amountCounter];
+        immBtn.textContent = "$" + taskData.immAmount[amountCounter];
 
         if (amountCounter > taskData.immAmount.length - 1) {
             amountCounterAsc--;
-            immBtn.textContent = taskData.immAmount[amountCounterAsc];
+            immBtn.textContent = "$" + taskData.immAmount[amountCounterAsc];
 
             if (amountCounterAsc < 0) {
                 // reset counters, makingChoice = false -> next delay
@@ -119,11 +119,13 @@ var task = (function() {
 
     var recordAnswer = function() {
         if (amountCounter > taskData.immAmount.length - 1) {
-            immChoicesAsc.push(parseInt(immBtn.textContent));
+            //splice $ from string
+            immChoicesAsc.push(parseInt(immBtn.textContent.substring(1)));
             console.log(immChoicesAsc);
             nextQuestion();
         } else {
-            immChoicesDesc.push(parseInt(immBtn.textContent));
+            //splice $ from string
+            immChoicesDesc.push(parseInt(immBtn.textContent.substring(1)));
             console.log(immChoicesDesc);
             nextQuestion();
         }
