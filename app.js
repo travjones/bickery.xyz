@@ -1,36 +1,36 @@
 // task data
 var taskData = {
-    "trialID": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27],
-    "immAmount": [1000, 990, 960, 920, 850, 800, 750, 700, 650, 600, 550, 500, 450, 400, 350, 300, 250, 200, 150, 100, 80, 60, 40, 20, 10, 5, 1],
-    "delAmount": 1000,
-    "delLength": [{
-        "inMonths": 0.25,
-        "inWords": "1 week"
+    trialID: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27],
+    immAmount: [1000, 990, 960, 920, 850, 800, 750, 700, 650, 600, 550, 500, 450, 400, 350, 300, 250, 200, 150, 100, 80, 60, 40, 20, 10, 5, 1],
+    delAmount: 1000,
+    delLength: [{
+        inMonths: 0.25,
+        inWords: "1 week"
     }, {
-        "inMonths": 0.5,
-        "inWords": "2 weeks"
+        inMonths: 0.5,
+        inWords: "2 weeks"
     }, {
-        "inMonths": 1,
-        "inWords": "1 month"
+        inMonths: 1,
+        inWords: "1 month"
     }, {
-        "inMonths": 6,
-        "inWords": "6 months"
+        inMonths: 6,
+        inWords: "6 months"
     }, {
-        "inMonths": 12,
-        "inWords": "1 year"
+        inMonths: 12,
+        inWords: "1 year"
     }, {
-        "inMonths": 60,
-        "inWords": "5 years"
+        inMonths: 60,
+        inWords: "5 years"
     }, {
-        "inMonths": 300,
-        "inWords": "25 years"
+        inMonths: 300,
+        inWords: "25 years"
     }]
 };
 
 // subject data
 var subjectData = {
-    "delays": [],
-    "indiffVals": [],
+    delays: [],
+    indiffVals: [],
 };
 
 var makingChoice = true;
