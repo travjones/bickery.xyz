@@ -117,12 +117,14 @@ var task = (function() {
     var recordAnswer = function() {
         if (amountCounter > taskData.immAmount.length - 1) {
             //splice $ from string
-            immChoicesAsc.push(parseInt(immBtn.textContent.substring(1)));
+            // immChoicesAsc.push(parseInt(immBtn.textContent.substring(1)));
+            immChoicesAsc.push(taskData.immAmount[amountCounterAsc]);
             console.log(immChoicesAsc);
             nextQuestion();
         } else {
             //splice $ from string
-            immChoicesDesc.push(parseInt(immBtn.textContent.substring(1)));
+            // immChoicesDesc.push(parseInt(immBtn.textContent.substring(1)));
+            immChoicesDesc.push(taskData.immAmount[amountCounter]);
             console.log(immChoicesDesc);
             nextQuestion();
         }
