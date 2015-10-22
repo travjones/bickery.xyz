@@ -9,22 +9,23 @@ var taskData = {
     }, {
         inMonths: 0.5,
         inWords: "2 weeks"
-    }, {
-        inMonths: 1,
-        inWords: "1 month"
-    }, {
-        inMonths: 6,
-        inWords: "6 months"
-    }, {
-        inMonths: 12,
-        inWords: "1 year"
-    }, {
-        inMonths: 60,
-        inWords: "5 years"
-    }, {
-        inMonths: 300,
-        inWords: "25 years"
     }]
+    // , {
+    //     inMonths: 1,
+    //     inWords: "1 month"
+    // }, {
+    //     inMonths: 6,
+    //     inWords: "6 months"
+    // }, {
+    //     inMonths: 12,
+    //     inWords: "1 year"
+    // }, {
+    //     inMonths: 60,
+    //     inWords: "5 years"
+    // }, {
+    //     inMonths: 300,
+    //     inWords: "25 years"
+    // }]
 };
 
 // subject data
@@ -140,6 +141,13 @@ function showResults() {
     var resultsHTML = "<div class=\"results-container\">\r\n  <div class=\"container u-vert-align\">\r\n    <div class=\"row\">\r\n      <div class=\"u-full-width\"><h3>Results<\/h3><\/div>\r\n    <\/div>\r\n    <div class=\"row\">\r\n      <div class=\"u-full-width\" id=\"results-k\"><\/div>\r\n      <div class=\"u-full-width\" id=\"results-a\"><\/div>\r\n      <div class=\"u-full-width\" id=\"results-graph\"><\/div>\r\n    <\/div>\r\n  <\/div>\r\n<\/div>";
     document.body.innerHTML = resultsHTML;
     calc();
+}
+
+function sendData() {
+    var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
+    xmlhttp.open("POST", "/data");
+    xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xmlhttp.send(JSON.stringify(subjectData));
 }
 
 // event listener - start

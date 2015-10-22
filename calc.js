@@ -21,6 +21,11 @@ function calc() {
 	document.getElementById("results-a").textContent = "a: " + parseFloat(params[1]).toFixed(3);
 	document.getElementById("results-graph").appendChild(graphLink);
 
+	subjectData.kValue = params[0];
+	subjectData.aValue = params[1];
+
+	sendData();
+
 	return params;
 }
 
