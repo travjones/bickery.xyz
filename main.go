@@ -25,6 +25,8 @@ type StoredData struct {
 }
 
 func dataPost(w http.ResponseWriter, r *http.Request) {
+
+	// request body as byte slice, need byte slice for unmarshal
 	body, err := ioutil.ReadAll(r.Body)
 	if err != nil {
 		log.Fatalln(err)
@@ -32,6 +34,7 @@ func dataPost(w http.ResponseWriter, r *http.Request) {
 
 	var s SubjectData
 
+	// unmarshal body into s
 	err = json.Unmarshal(body, &s)
 	if err != nil {
 		log.Fatalln(err)
@@ -39,20 +42,27 @@ func dataPost(w http.ResponseWriter, r *http.Request) {
 
 	fmt.Println(s.KParam)
 
+	// connect to db
 	db, err := sqlx.Connect("postgres", "user=travisjones dbname=json_test sslmode=disable")
 	if err != nil {
 		log.Fatalln(err)
 	}
 
-	sjson, _ := json.Marshal(s) // handle err dummy
+	// marshal json before storing in db
+	sjson, err := json.Marshal(s)
+	if err != nil {
+		log.Fatalln(err)
+	}
 
 	fmt.Println(sjson)
 
+	// insert subject data json into db
 	_, err = db.Exec("insert into subject_data values (default, $1)", sjson)
 	if err != nil {
 		log.Fatalln(err)
 	}
 
+	// select all records in subject_data
 	sd := []StoredData{}
 	err = db.Select(&sd, "select * from subject_data")
 	if err != nil {
