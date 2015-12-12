@@ -10,22 +10,22 @@ var taskData = {
         inMonths: 0.5,
         inWords: "2 weeks"
     }]
-    // , {
-    //     inMonths: 1,
-    //     inWords: "1 month"
-    // }, {
-    //     inMonths: 6,
-    //     inWords: "6 months"
-    // }, {
-    //     inMonths: 12,
-    //     inWords: "1 year"
-    // }, {
-    //     inMonths: 60,
-    //     inWords: "5 years"
-    // }, {
-    //     inMonths: 300,
-    //     inWords: "25 years"
-    // }]
+    , {
+        inMonths: 1,
+        inWords: "1 month"
+    }, {
+        inMonths: 6,
+        inWords: "6 months"
+    }, {
+        inMonths: 12,
+        inWords: "1 year"
+    }, {
+        inMonths: 60,
+        inWords: "5 years"
+    }, {
+        inMonths: 300,
+        inWords: "25 years"
+    }]
 };
 
 // subject data
