@@ -5,3 +5,5 @@ Bickery is a javascript implementation of the delay discounting task described b
 V = A / (1 + kD)^a
 
 If you would like to learn more about delay discounting, check out [Odum (2011)](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3213005/).
+
+Test
