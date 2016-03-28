@@ -68,3 +68,5 @@ var fminsearch=function(fun,Parm0,x,y,Opt){// fun = function(x,Parm)
 	}
 	return P0
 };
+
+// test
